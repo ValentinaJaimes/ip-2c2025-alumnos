@@ -1,28 +1,42 @@
 # Contrato: init(vals), step() -> {"a": int, "b": int, "swap": bool, "done": bool}
-#FALTA AGREGAR METRICAS!!
 
 items = []
 n = 0
 i = 0      # elemento que queremos insertar
 j = None   # cursor de desplazamiento hacia la izquierda (None = empezar)
 
+# MÉTRICAS
+steps = 0
+comparaciones = 0
+
 def init(vals):
     global items, n, i, j
+    global steps, comparaciones
     items = list(vals)
     n = len(items)
     i = 1      # común: arrancar en el segundo elemento
     j = None
 
+    steps = 0
+    comparaciones = 0
+
 def step():
     global items, n, i, j
+    global steps, comparaciones
 
+    steps += 1   # se contó un micro-paso
+    print(f"DEBUG {steps}: Comparaciones={comparaciones}, Steps={steps}") #Muestra en DevTools (f12) 
+   
     if i >= n:                # Si i >= n: devolver {"done": True}.
+        print(f"*** ALGORITMO FINALIZADO. Comparaciones totales: {comparaciones}, Steps totales: {steps} ***")
         return {"done": True} 
     
     # - Si j es None: empezar desplazamiento para el items[i] (p.ej., j = i) y devolver un highlight sin swap.
     if j is None:
         j = i
         return {"a": j-1, "b": j, "swap":False, "done": False}
+    
+    comparaciones += 1
     
     # - Mientras j > 0 y items[j-1] > items[j]: hacer UN swap adyacente (j-1, j) y devolverlo con swap=True.
     if j > 0 and items[j-1] > items[j]:
