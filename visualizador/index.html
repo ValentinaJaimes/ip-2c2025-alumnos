@@ -6,28 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Visualizador de Ordenamientos — Python externo</title>
   <style>
-    :root { --bg:#0f172a; --panel:#111827; --muted:#94a3b8; --text:#e2e8f0; --accent:#22d3ee; }
+    :root { --bg:#eb0000; --panel:#000000; --muted:#ffffff; --text:#ffffff; --accent:#ff0000; }
     *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial;background:linear-gradient(180deg,#0b1220,var(--bg));color:var(--text);min-height:100vh;display:grid;grid-template-rows:auto 1fr}
-    header{padding:16px 20px;border-bottom:1px solid #1f2937;background:rgba(17,24,39,.75);backdrop-filter:blur(6px);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial;background:linear-gradient(180deg,#000000,var(--bg));color:var(--text);min-height:100vh;display:grid;grid-template-rows:auto 1fr}
+    header{padding:16px 20px;border-bottom:1px solid #000000;background:rgba(17,24,39,.75);backdrop-filter:blur(6px);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
     h1{font-size:18px;margin:0;letter-spacing:.3px}
-    .pill{padding:4px 10px;border-radius:999px;background:#1f2937;color:var(--muted);font-size:12px}
+    .pill{padding:4px 10px;border-radius:999px;background:#000000;color:var(--muted);font-size:12px}
     main{padding:12px 16px 20px;display:grid;grid-template-rows:auto 1fr auto;gap:12px}
     .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;width:100%}
-    .card{background:var(--panel);border:1px solid #1f2937;border-radius:14px;padding:12px}
+    .card{background:var(--panel);border:1px solid #ffffff;border-radius:14px;padding:12px}
     label{font-size:12px;color:var(--muted);display:block;margin-bottom:6px}
-    select,input[type=range],input[type=file]{width:100%;padding:10px;border-radius:10px;border:1px solid #334155;background:#0b1220;color:var(--text)}
+    select,input[type=range],input[type=file]{width:100%;padding:10px;border-radius:10px;border:1px solid #ffffff;background:#000000;color:var(--text)}
     .row{display:flex;align-items:center;gap:10px}
     .row>*{flex:1}
     .btns{display:flex;flex-wrap:wrap;gap:10px}
-    button{background:#0b1220;color:var(--text);border:1px solid #334155;padding:10px 14px;border-radius:12px;cursor:pointer;transition:transform .06s ease,border-color .2s ease}
+    button{background:#000000;color:var(--text);border:1px solid #ffffff;padding:10px 14px;border-radius:12px;cursor:pointer;transition:transform .06s ease,border-color .2s ease}
     button:hover{border-color:var(--accent)}
     button:active{transform:translateY(1px)}
     button.primary{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
-    #canvasWrap{background:#0b1220;border:1px dashed #334155;border-radius:16px;padding:10px;position:relative}
-    #view{width:100%;height:64vh;display:block;border-radius:10px;background:radial-gradient(1000px 500px at 20% -10%,rgba(34,211,238,.08),transparent 70%),radial-gradient(900px 500px at 80% 110%,rgba(167,139,250,.08),transparent 70%),#0a0f1d}
+    #canvasWrap{background:#000000;border:1px dashed #000000;border-radius:16px;padding:10px;position:relative}
+    #view{width:100%;height:64vh;display:block;border-radius:10px;background:radial-gradient(1000px 500px at 20% -10%,rgba(69,0,0,.08),transparent 70%),radial-gradient(900px 500px at 80% 110%,rgba(69,0,0,.08),transparent 70%),##000000}
     .footer{color:var(--muted);font-size:12px;text-align:center;padding:8px 0}
-    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0b1220;border:1px solid #334155;padding:2px 6px;border-radius:6px}
+    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#000000;border:1px solid #ffffff;padding:2px 6px;border-radius:6px}
   </style>
   <script src="https://cdn.jsdelivr.net/pyodide/v0.26.0/full/pyodide.js" defer></script>
   <script defer>
@@ -107,7 +107,7 @@
         var octx = off.getContext('2d');
         octx.imageSmoothingEnabled = false;
         var grad = octx.createLinearGradient(0,0,off.width,off.height);
-        grad.addColorStop(0,'#38bdf8'); grad.addColorStop(1,'#a78bfa');
+        grad.addColorStop(0,'#000000'); grad.addColorStop(1,'#eb0000');
         octx.fillStyle = grad; octx.fillRect(0,0,off.width,off.height);
         state.imageBitmap = off; // canvas fuente
       }
@@ -153,7 +153,7 @@
         var h  = Math.max(2*DPR, (it.value/maxVal) * (H - 10*DPR)) | 0;
         var y  = (H - h) | 0;
         var hi = (state.highlight.a===k || state.highlight.b===k);
-        ctx.fillStyle = hi ? '#22d3ee' : '#334155';
+        ctx.fillStyle = hi ? '#eb0000' : '#ffffff';
         ctx.fillRect(x|0, y|0, w|0, h|0);
         x += w + gap;
       }
@@ -179,7 +179,7 @@
         var yy  = startY | 0;
         ctx.drawImage(bmp, 0,0,bmp.width,bmp.height, xx,yy, w2, Himg);
         if(state.highlight.a===m || state.highlight.b===m){
-          ctx.strokeStyle='#22d3ee'; ctx.lineWidth=2*DPR;
+          ctx.strokeStyle='#ffc107'; ctx.lineWidth=2*DPR;
           ctx.strokeRect(xx+1*DPR,yy+1*DPR,w2-2*DPR,Himg-2*DPR);
         }
         x2 += w2;
