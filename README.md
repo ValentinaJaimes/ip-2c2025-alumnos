@@ -1,6 +1,6 @@
 # TP — Visualización de algoritmos de ordenamiento 
 
-## Introducción a la Programación - Comisión virtual - UNGS2C2025
+## Introducción a la Programación - Comisión Virtual - UNGS2C2025
 
 ## Integrantes 👥
  - Pereyra Rios, Marco Leon
@@ -16,7 +16,7 @@
 
 ---
 
-# Algoritmos implementados ✅
+## Algoritmos implementados ✅
 
 Hemos implementado los siguientes algoritmos dentro de la carpeta `/algorithms/`:
 
