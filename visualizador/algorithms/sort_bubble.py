@@ -14,7 +14,7 @@ def init(vals):
 
 def step():
     global items, n, i, j
-    if n < 2 or i >= n - 1:
+    if i >= n - 1:
         return {"done": True}
 
     a = j
